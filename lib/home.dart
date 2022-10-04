@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fooderlich/config.dart';
-import 'card1.dart';
-import 'card2.dart';
-import 'card3.dart';
+import 'models/explore_recipe.dart';
+import 'components/components.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -16,9 +15,44 @@ class _HomeState extends State<Home> {
   int _selectedIndex = 0;
 
   static List<Widget> pages = <Widget>[
-    const Card1(),
-    const Card2(),
-    const Card3(),
+    Card1(
+        recipe: ExploreRecipe(
+            authorName: 'Ray Wenderlich',
+            title: 'The Art of Dough',
+            subtitle: 'Editor\'s Choice',
+            message: 'Learn to make the perfect bread.',
+            backgroundImage: 'assets/magazine_pics/card_bread.jpg',
+            backgroundImageSource: '',
+            calories: 0,
+            cardType: '',
+            description: '',
+            dietType: '',
+            durationInMinutes: 0,
+            ingredients: null)),
+    Card2(
+        recipe: ExploreRecipe(
+            authorName: 'Mike Katz',
+            role: 'Smoothie Connoisseur',
+            profileImage: 'assets/profile_pics/person_katz.jpeg',
+            title: 'Recipe',
+            subtitle: 'Smoothies',
+            backgroundImage: 'assets/magazine_pics/mag2.png')),
+    Card3(
+        recipe: ExploreRecipe(
+            title: 'Vegan Trends',
+            tags: [
+              'Healthy',
+              'Vegan',
+              'Carrots',
+              'Greens',
+              'Wheat',
+              'Pescetarian',
+              'Mint',
+              'Lemongrass',
+              'Salad',
+              'Water'
+            ],
+            backgroundImage: 'assets/magazine_pics/mag3.png')),
   ];
 
   void _onItemTapped(int index) {
