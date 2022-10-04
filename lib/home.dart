@@ -21,14 +21,7 @@ class _HomeState extends State<Home> {
             title: 'The Art of Dough',
             subtitle: 'Editor\'s Choice',
             message: 'Learn to make the perfect bread.',
-            backgroundImage: 'assets/magazine_pics/card_bread.jpg',
-            backgroundImageSource: '',
-            calories: 0,
-            cardType: '',
-            description: '',
-            dietType: '',
-            durationInMinutes: 0,
-            ingredients: null)),
+            backgroundImage: 'assets/magazine_pics/card_bread.jpg')),
     Card2(
         recipe: ExploreRecipe(
             authorName: 'Mike Katz',
