@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fooderlich/config.dart';
 import 'models/explore_recipe.dart';
 import 'components/components.dart';
+import 'screens/explore_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -15,6 +16,7 @@ class _HomeState extends State<Home> {
   int _selectedIndex = 0;
 
   static List<Widget> pages = <Widget>[
+    ExploreScreen(),
     Card1(
         recipe: ExploreRecipe(
             authorName: 'Ray Wenderlich',
