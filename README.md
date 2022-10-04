@@ -1,6 +1,6 @@
 # fooderlich
 
-A new Flutter project.
+Projek Fooderlich App - Rifan Setiadi
 
 ## Getting Started
 
