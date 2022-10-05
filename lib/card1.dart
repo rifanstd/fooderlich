@@ -1,12 +1,10 @@
 // ignore_for_file: sort_child_properties_last
 
 import 'package:flutter/material.dart';
-import '../fooderlich_theme.dart';
-import '../models/models.dart';
+import 'fooderlich_theme.dart';
 
 class Card1 extends StatelessWidget {
-  final ExploreRecipe recipe;
-  const Card1({Key? key, required this.recipe}) : super(key: key);
+  const Card1({Key? key}) : super(key: key);
 
   final String category = 'Editor\'s Choice';
   final String title = 'The Art of Dough';
@@ -20,19 +18,19 @@ class Card1 extends StatelessWidget {
         child: Stack(
           children: [
             Text(
-              recipe.subtitle.toString(),
+              category,
               style: FooderlichTheme.darkTextTheme.bodyText1,
             ),
             Positioned(
               child: Text(
-                recipe.title.toString(),
+                title,
                 style: FooderlichTheme.darkTextTheme.headline2,
               ),
               top: 20,
             ),
             Positioned(
               child: Text(
-                recipe.message.toString(),
+                description,
                 style: FooderlichTheme.darkTextTheme.bodyText1,
               ),
               bottom: 30,
@@ -40,7 +38,7 @@ class Card1 extends StatelessWidget {
             ),
             Positioned(
               child: Text(
-                recipe.authorName.toString(),
+                chef,
                 style: FooderlichTheme.darkTextTheme.bodyText1,
               ),
               bottom: 10,
@@ -48,15 +46,14 @@ class Card1 extends StatelessWidget {
             )
           ],
         ),
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(30),
         constraints: const BoxConstraints.expand(width: 350, height: 450),
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(recipe.backgroundImage.toString()),
-            fit: BoxFit.cover,
-          ),
-          borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-        ),
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/mag1.png"),
+              fit: BoxFit.cover,
+            ),
+            borderRadius: BorderRadius.all(Radius.circular(10.0))),
       ),
     );
   }
