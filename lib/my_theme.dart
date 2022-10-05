@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'fooderlich_theme.dart';
 
 class MyTheme with ChangeNotifier {
-  static bool _isDark = false;
+  static bool _isDark = true;
 
   ThemeData currentTheme() {
     return _isDark ? FooderlichTheme.dark() : FooderlichTheme.light();

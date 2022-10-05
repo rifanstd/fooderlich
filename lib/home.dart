@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'config.dart';
 import 'models/explore_recipe.dart';
 import 'components/components.dart';
 import 'screens/explore_screen.dart';
@@ -57,8 +58,27 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            title: Text('Fooderlich',
-                style: Theme.of(context).textTheme.headline6)),
+          title: Text(
+            'Fooderlich',
+            style: Theme.of(context).textTheme.headline6,
+          ),
+          actions: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: IconButton(
+                    icon: const Icon(Icons.sunny),
+                    onPressed: () {
+                      currentTheme.switchTheme();
+                    },
+                  ),
+                ),
+              ],
+            )
+          ],
+        ),
         body: pages[_selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
             selectedItemColor:
@@ -67,11 +87,11 @@ class _HomeState extends State<Home> {
             onTap: _onItemTapped,
             items: <BottomNavigationBarItem>[
               const BottomNavigationBarItem(
-                  icon: Icon(Icons.card_giftcard), label: 'Card'),
+                  icon: Icon(Icons.explore), label: 'Explore'),
               const BottomNavigationBarItem(
-                  icon: Icon(Icons.card_giftcard), label: 'Card2'),
+                  icon: Icon(Icons.book), label: 'Recipes'),
               const BottomNavigationBarItem(
-                  icon: Icon(Icons.card_giftcard), label: 'Card3'),
+                  icon: Icon(Icons.list), label: 'To Buy'),
             ]));
   }
 }
