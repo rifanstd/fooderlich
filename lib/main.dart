@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'config.dart';
 import 'home.dart';
+import 'package:provider/provider.dart';
+import '../models/models.dart ';
 
 class AppData {
   bool isFavorited;
@@ -57,7 +59,12 @@ class _FooderlichState extends State<Fooderlich> {
       debugShowCheckedModeBanner: false,
       title: 'Fooderlich',
       theme: currentTheme.currentTheme(),
-      home: const Home(),
+      home: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (context) => TabManager()),
+        ],
+        child: const Home(),
+      ),
     );
   }
 }
