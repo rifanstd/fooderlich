@@ -20,29 +20,7 @@ class GroceryListScreen extends StatelessWidget {
         itemCount: groceryItems.length,
         itemBuilder: (context, index) {
           final item = groceryItems[index];
-
-          return GroceryTile(
-            key: Key(item.id),
-            item: item,
-            onComplete: (change) {
-              if (change != null) {
-                manager.completeItem(index, change);
-              }
-            },
-          );
-        },
-        separatorBuilder: (context, index) {
-          return const SizedBox(height: 16.0);
-        },
-      ),
-    );
-
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: ListView.separated(
-        itemCount: groceryItems.length,
-        itemBuilder: (context, index) {
-          final item = groceryItems[index];
+          // 1
           return InkWell(
             child: GroceryTile(
                 key: Key(item.id),
@@ -52,16 +30,21 @@ class GroceryListScreen extends StatelessWidget {
                     manager.completeItem(index, change);
                   }
                 }),
+            // 2
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => GroceryItemScreen(
                     originalItem: item,
+                    // 3
                     onUpdate: (item) {
+                      // 4
                       manager.updateItem(item, index);
+                      // 5
                       Navigator.pop(context);
                     },
+                    // 6
                     onCreate: (item) {},
                   ),
                 ),
