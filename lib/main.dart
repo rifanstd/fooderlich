@@ -1,6 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
+import 'package:fooderlich/models/models.dart';
 import 'config.dart';
 import 'home.dart';
 import 'package:provider/provider.dart';
@@ -62,6 +63,7 @@ class _FooderlichState extends State<Fooderlich> {
       home: MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (context) => TabManager()),
+          ChangeNotifierProvider(create: (context) => GroceryManager()),
         ],
         child: const Home(),
       ),
