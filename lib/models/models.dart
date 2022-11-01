@@ -5,3 +5,7 @@ export 'explore_data.dart';
 export 'grocery_item.dart';
 export 'tab_manager.dart';
 export 'grocery_manager.dart';
+export 'app_cache.dart';
+export 'user.dart';
+export 'app_state_manager.dart';
+export 'profile_manager.dart';
