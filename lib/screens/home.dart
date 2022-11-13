@@ -1,36 +1,53 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../config.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../config.dart';
 import 'explore_screen.dart';
-import 'recipes_screen.dart';
 import 'grocery_screen.dart';
+import 'recipes_screen.dart';
+
 import 'package:provider/provider.dart';
 import '../models/models.dart';
 
 class Home extends StatefulWidget {
+  const Home({
+    super.key,
+    required this.currentTab,
+  });
+
   final int currentTab;
 
-  const Home({
-    Key? key,
-    required this.currentTab,
-  }) : super(key: key);
-
   @override
-  _HomeState createState() => _HomeState();
+  HomeState createState() => HomeState();
 }
 
-class _HomeState extends State<Home> {
+class HomeState extends State<Home> {
+  int _selectedIndex = 0;
+  static const String prefSelectedIndexKey = 'selectedIndex';
   static List<Widget> pages = <Widget>[
     ExploreScreen(),
     RecipesScreen(),
     const GroceryScreen(),
   ];
-  // void _onItemTapped(int index) {
-  //   setState(() {
-  //     _selectedIndex = index;
-  //   });
-  // }
+
+  @override
+  void initState() {
+    super.initState();
+    getCurrentIndex();
+  }
+
+  void getCurrentIndex() async {
+    final prefs = await SharedPreferences.getInstance();
+    if (prefs.containsKey(prefSelectedIndexKey)) {
+      setState(() {
+        final index = prefs.getInt(prefSelectedIndexKey);
+        if (index != null) {
+          _selectedIndex = index;
+        }
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,35 +72,51 @@ class _HomeState extends State<Home> {
               ),
               profileButton(widget.currentTab),
             ],
-          )
+          ),
         ],
       ),
       body: IndexedStack(
-        index: widget.currentTab,
+        index: _selectedIndex,
         children: pages,
       ),
       bottomNavigationBar: BottomNavigationBar(
-          selectedItemColor:
-              Theme.of(context).textSelectionTheme.selectionColor,
-          currentIndex: widget.currentTab,
-          onTap: (index) {
-            Provider.of<AppStateManager>(context, listen: false).goToTab(index);
-            context.goNamed(
-              'home',
-              params: {
-                'tab': '$index',
-              },
-            );
-          },
-          items: <BottomNavigationBarItem>[
-            const BottomNavigationBarItem(
-                icon: Icon(Icons.explore), label: 'Explore'),
-            const BottomNavigationBarItem(
-                icon: Icon(Icons.book), label: 'Recipes'),
-            const BottomNavigationBarItem(
-                icon: Icon(Icons.list), label: 'To Buy'),
-          ]),
+        selectedItemColor: Theme.of(context).textSelectionTheme.selectionColor,
+        currentIndex: _selectedIndex,
+        onTap: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+          saveCurrentIndex();
+
+          Provider.of<AppStateManager>(context, listen: false).goToTab(index);
+          context.goNamed(
+            'home',
+            params: {
+              'tab': '$index',
+            },
+          );
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.explore),
+            label: 'Explore',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.book),
+            label: 'Recipes',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.list),
+            label: 'To Buy',
+          ),
+        ],
+      ),
     );
+  }
+
+  void saveCurrentIndex() async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setInt(prefSelectedIndexKey, _selectedIndex);
   }
 
   Widget profileButton(int currentTab) {
