@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fooderlich/api/get_recipes.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -87,6 +88,8 @@ class HomeState extends State<Home> {
             _selectedIndex = index;
           });
           saveCurrentIndex();
+          GetRecipes.getRecipes();
+
 
           Provider.of<AppStateManager>(context, listen: false).goToTab(index);
           context.goNamed(

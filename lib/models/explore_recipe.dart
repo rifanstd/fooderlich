@@ -57,7 +57,7 @@ class ExploreRecipe {
     durationInMinutes = json['durationInMinutes'];
     dietType = json['dietType'];
     calories = json['calories'];
-    tags = json['tags'].cast<String>();
+    // tags = json['tags'].cast<String>();
     description = json['description'];
     source = json['source'];
     if (json['ingredients'] != null) {
