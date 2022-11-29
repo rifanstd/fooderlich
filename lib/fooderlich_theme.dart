@@ -12,7 +12,7 @@ class FooderlichTheme {
     headline3: GoogleFonts.openSans(
         fontSize: 16.0, fontWeight: FontWeight.w600, color: Colors.black),
     headline6: GoogleFonts.openSans(
-        fontSize: 20.0, fontWeight: FontWeight.w600, color: Colors.black),
+        fontSize: 20.0, fontWeight: FontWeight.w600, color: Colors.white),
   );
 
   static TextTheme darkTextTheme = TextTheme(
@@ -30,7 +30,7 @@ class FooderlichTheme {
 
   static ThemeData light() {
     return ThemeData(
-        primarySwatch: Colors.amber,
+        primarySwatch: Colors.blueGrey,
         primaryColor: Colors.white,
         brightness: Brightness.light,
         backgroundColor: const Color(0xFFE5E5E5),

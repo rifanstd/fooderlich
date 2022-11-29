@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fooderlich/api/get_recipes.dart';
+import 'package:fooderlich/fooderlich_theme.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -56,20 +57,19 @@ class HomeState extends State<Home> {
       appBar: AppBar(
         title: Text(
           'Fooderlich',
-          style: Theme.of(context).textTheme.headline6,
+          style: FooderlichTheme.lightTextTheme.headline6,
         ),
         actions: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                child: IconButton(
-                  icon: const Icon(Icons.sunny),
-                  onPressed: () {
-                    currentTheme.switchTheme();
-                  },
-                ),
+              // const Padding(
+              //   padding: EdgeInsets.symmetric(horizontal: 10.0),
+              // ),
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.bookmark_added_outlined),
+                color: Colors.white,
               ),
               profileButton(widget.currentTab),
             ],
@@ -89,7 +89,6 @@ class HomeState extends State<Home> {
           });
           saveCurrentIndex();
           GetRecipes.getRecipes();
-
 
           Provider.of<AppStateManager>(context, listen: false).goToTab(index);
           context.goNamed(
@@ -127,9 +126,10 @@ class HomeState extends State<Home> {
       padding: const EdgeInsets.only(right: 16.0),
       child: GestureDetector(
         child: const CircleAvatar(
+          radius: 15,
           backgroundColor: Colors.transparent,
           backgroundImage: AssetImage(
-            'assets/profile_pics/person_stef.jpeg',
+            'assets/profile_pics/person_rifan.png',
           ),
         ),
         onTap: () {

@@ -44,6 +44,10 @@ dependencies:
   json_serializable: ^3.5.1
   http: ^0.13.5
   dio: ^4.0.6
+  sqflite: ^2.0.3+1
+  path_provider: ^2.0.11
+  synchronized: ^3.0.0+3
+  path: ^1.8.2
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -75,6 +79,7 @@ flutter:
     - assets/food_pics/
     - assets/magazine_pics/
     - assets/profile_pics/
+    - assets/profile_pics/person_rifan.png
     - assets/sample_data/
     - assets/fooderlich_assets/
 
