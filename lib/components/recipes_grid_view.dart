@@ -8,18 +8,19 @@ class RecipesGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
-        child: GridView.builder(
-            itemCount: recipes.length,
-            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 400.0,
-              mainAxisSpacing: 10.0,
-              crossAxisSpacing: 10.0,
-              childAspectRatio: 1.0,
-            ),
-            itemBuilder: (context, index) {
-              final simpleRecipe = recipes[index];
-              return RecipeThumbnail(recipe: simpleRecipe);
-            }));
+      padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
+      child: GridView.builder(
+        itemCount: recipes.length,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+        ),
+        itemBuilder: (context, index) {
+          final simpleRecipe = recipes[index];
+          return RecipeThumbnail(
+            recipe: simpleRecipe,
+          );
+        },
+      ),
+    );
   }
 }

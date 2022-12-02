@@ -12,16 +12,20 @@ class Card2 extends StatelessWidget {
       child: Container(
         constraints: const BoxConstraints.expand(width: 350, height: 450),
         decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage(recipe.backgroundImage.toString()),
-                fit: BoxFit.cover),
-            borderRadius: const BorderRadius.all(Radius.circular(10.0))),
+          image: DecorationImage(
+              image: AssetImage(recipe.backgroundImage.toString()),
+              fit: BoxFit.cover),
+          borderRadius: const BorderRadius.all(
+            Radius.circular(10.0),
+          ),
+        ),
         child: Column(
           children: [
-            AuthorCard(
-                authorName: recipe.authorName.toString(),
-                title: recipe.role.toString(),
-                imageProvider: AssetImage(recipe.profileImage.toString())),
+            const AuthorCard(
+              authorName: "Rifan Setiadi",
+              title: "Android Developer",
+              imageProvider: AssetImage("assets/profile_pics/person_rifan.png"),
+            ),
             Expanded(
               child: Stack(
                 children: [

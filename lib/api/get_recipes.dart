@@ -8,10 +8,10 @@ class GetRecipes {
   static var URL = 'https://uji.fmipa.unila.ac.id/api-test/recipes.json';
 
   static Future<List<SimpleRecipe>>getRecipes() async {
-    final response = await Dio().get(URL);
+    final response = await http.get(Uri.parse(URL));
 
     if (response.statusCode == 200) {
-      final Map<String, dynamic> json = response.data;
+      final Map<String, dynamic> json = jsonDecode(response.body);
       if(json['recipes'] != null){
         final recipes = <SimpleRecipe>[];
         json['recipes'].forEach((v) {

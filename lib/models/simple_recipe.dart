@@ -15,15 +15,6 @@ class SimpleRecipe {
     this.information,
   );
 
-  SimpleRecipe.fromJson(Map<String, dynamic> json) {
-    id = json['id'] as String;
-    dishImage = json['dishImage'];
-    title = json['title'];
-    duration = json['duration'];
-    source = json['source'];
-    information = json['information'].cast<String>();
-  }
-
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{};
 
@@ -32,7 +23,7 @@ class SimpleRecipe {
     map['title'] = title;
     map['duration'] = duration;
     map['source'] = source;
-    map['information'] = information;
+    map['information'] = information.toString();
 
     return map;
   }
@@ -43,6 +34,15 @@ class SimpleRecipe {
     title = map['title'];
     duration = map['duration'];
     source = map['source'];
-    information = map['information'];
+    information = map['information']?.split(','); // string diubah menjadi list
+  }
+
+  SimpleRecipe.fromJson(Map<String, dynamic> json) {
+    id = json['id'] as String;
+    dishImage = json['dishImage'];
+    title = json['title'];
+    duration = json['duration'];
+    source = json['source'];
+    information = json['information'].cast<String>();
   }
 }

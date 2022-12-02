@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fooderlich/api/get_recipes.dart';
+import 'package:fooderlich/database/db_helper.dart';
 import 'package:fooderlich/fooderlich_theme.dart';
+import 'package:fooderlich/screens/screens.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -25,6 +27,7 @@ class Home extends StatefulWidget {
 }
 
 class HomeState extends State<Home> {
+  DBHelper dbHelper = DBHelper();
   int _selectedIndex = 0;
   static const String prefSelectedIndexKey = 'selectedIndex';
   static List<Widget> pages = <Widget>[
@@ -67,7 +70,18 @@ class HomeState extends State<Home> {
               //   padding: EdgeInsets.symmetric(horizontal: 10.0),
               // ),
               IconButton(
-                onPressed: () {},
+                onPressed: () async {
+                  List? fav = await dbHelper.getAllRecipes();
+                  print(fav.toString());
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute<void>(
+                      builder: (BuildContext context) {
+                        return FavoriteScreen();
+                      },
+                    ),
+                  );
+                },
                 icon: const Icon(Icons.bookmark_added_outlined),
                 color: Colors.white,
               ),
@@ -88,7 +102,7 @@ class HomeState extends State<Home> {
             _selectedIndex = index;
           });
           saveCurrentIndex();
-          GetRecipes.getRecipes();
+          // GetRecipes.getRecipes();
 
           Provider.of<AppStateManager>(context, listen: false).goToTab(index);
           context.goNamed(
