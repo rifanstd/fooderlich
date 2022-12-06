@@ -77,7 +77,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                           ],
                         ),
 
-                        // MASIH ADA BUG 
+                        // MASIH ADA BUG
                         // IconButton(
                         //   onPressed: () async {
                         //     await dbHelper.deleteRecipe(recipe.id.toString());
