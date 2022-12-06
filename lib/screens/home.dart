@@ -82,7 +82,7 @@ class HomeState extends State<Home> {
                     ),
                   );
                 },
-                icon: const Icon(Icons.bookmark_added_outlined),
+                icon: const Icon(Icons.bookmark_added),
                 color: Colors.white,
               ),
               profileButton(widget.currentTab),

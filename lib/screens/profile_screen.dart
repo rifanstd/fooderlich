@@ -46,10 +46,10 @@ class ProfileScreenState extends State<ProfileScreen> {
       children: [
         buildDarkModeRow(),
         ListTile(
-          title: const Text('View raywenderlich.com'),
+          title: const Text('Instagram'),
           onTap: () async {
             if (kIsWeb || Platform.isMacOS) {
-              await launchUrl(Uri.parse('https://www.raywenderlich.com/'));
+              await launchUrl(Uri.parse('https://www.instagram.com/rifanstd/'));
             } else {
               context.goNamed(
                 'rw',

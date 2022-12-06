@@ -30,7 +30,7 @@ class FooderlichTheme {
 
   static ThemeData light() {
     return ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.deepOrange,
         primaryColor: Colors.white,
         brightness: Brightness.light,
         backgroundColor: const Color(0xFFE5E5E5),
